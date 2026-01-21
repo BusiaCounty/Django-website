@@ -1,0 +1,16 @@
+{% extends "public/base.html" %}
+
+{% block content %}
+  <h1 class="h3">Careers</h1>
+  <div class="list-group mt-2">
+    {% for j in jobs %}
+      <a class="list-group-item list-group-item-action" href="{% url 'public:career_detail' j.slug %}">
+        <h2 class="h5 mb-1">{{ j.title }}</h2>
+        <div class="small text-muted">{{ j.department.name }}{% if j.closing_date %} • Closes: {{ j.closing_date }}{% endif %}</div>
+      </a>
+    {% empty %}
+      <div class="text-muted">No vacancies published yet.</div>
+    {% endfor %}
+  </div>
+{% endblock %}
+

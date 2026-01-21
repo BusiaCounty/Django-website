@@ -1,0 +1,21 @@
+{% extends "public/base.html" %}
+
+{% block content %}
+  <h1 class="h3">Services</h1>
+  <div class="list-group mt-2">
+    {% for s in services %}
+      <div class="list-group-item">
+        <div class="d-flex justify-content-between align-items-start gap-3">
+          <div>
+            <h2 class="h5 mb-1">{{ s.title }}</h2>
+            <div class="small text-muted">{{ s.department.name }}</div>
+            {% if s.summary %}<p class="mb-0 mt-2">{{ s.summary|linebreaksbr }}</p>{% endif %}
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="text-muted">No services published yet.</div>
+    {% endfor %}
+  </div>
+{% endblock %}
+

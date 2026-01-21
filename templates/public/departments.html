@@ -1,0 +1,19 @@
+{% extends "public/base.html" %}
+
+{% block content %}
+  <h1 class="h3">Departments</h1>
+  <div class="row g-3 mt-1">
+    {% for d in departments %}
+      <div class="col-md-6">
+        <div class="bg-white border rounded-3 p-3 h-100">
+          <h2 class="h5 mb-1">{{ d.name }}</h2>
+          {% if d.head_of_department %}<div class="small text-muted">Head: {{ d.head_of_department }}</div>{% endif %}
+          {% if d.description %}<p class="mt-2 mb-0">{{ d.description|linebreaksbr }}</p>{% endif %}
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-muted">No departments have been added yet.</p>
+    {% endfor %}
+  </div>
+{% endblock %}
+

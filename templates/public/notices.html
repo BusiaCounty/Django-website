@@ -1,0 +1,16 @@
+{% extends "public/base.html" %}
+
+{% block content %}
+  <h1 class="h3">Notices & Announcements</h1>
+  <div class="list-group mt-2">
+    {% for n in notices %}
+      <a class="list-group-item list-group-item-action" href="{% url 'notices:detail' n.slug %}">
+        <h2 class="h5 mb-1">{{ n.title }}</h2>
+        {% if n.summary %}<p class="mb-0">{{ n.summary|truncatechars:180 }}</p>{% endif %}
+      </a>
+    {% empty %}
+      <div class="text-muted">No notices published yet.</div>
+    {% endfor %}
+  </div>
+{% endblock %}
+
